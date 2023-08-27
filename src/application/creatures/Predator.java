@@ -23,6 +23,7 @@ public class Predator extends Creature {
         Coordinates coordinatesToMove = getCoordinatesForMove(map, sourceCoordinates);
 
         if(isCreatureCanEat(map, map.getEntity(coordinatesToMove))) {
+            map.setCountHerbivore(map.getCountHerbivore() - 1);
             this.health++;
         }
 

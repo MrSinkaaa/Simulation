@@ -15,8 +15,10 @@ public class Herbivore extends Creature {
         Coordinates coordinatesToMove = getCoordinatesForMove(map, sourceCoordinates);
 
         if(isCreatureCanEat(map, map.getEntity(coordinatesToMove))) {
+            map.setCountGrass(map.getCountGrass() - 1);
             this.health++;
         }
+
         map.setEntity(coordinatesToMove, map.getEntity(sourceCoordinates));
         map.deleteEntity(sourceCoordinates);
     }
