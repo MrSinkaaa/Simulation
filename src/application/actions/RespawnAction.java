@@ -2,7 +2,7 @@ package application.actions;
 
 import application.Map;
 import application.Simulation;
-import application.creatures.Herbivore;
+import application.entities.creatures.Herbivore;
 import application.entities.Grass;
 
 public class RespawnAction extends Action {
@@ -14,18 +14,26 @@ public class RespawnAction extends Action {
     }
 
     public void respawnGrass() {
-        map.spawnEntities(new Grass(), map.getCountGrass() * 5);
+        int countGrasses = map.getCountGrass() * 6;
+        for(int i = 0; i <= countGrasses - map.getCountGrass(); i++) {
+            map.setEntity(map.getRandomEmptyCoordinates(), new Grass());
+        }
+        map.setCountGrass(countGrasses);
     }
 
     public void respawnHerbivore() {
-        map.spawnEntities(new Herbivore(), map.getCountHerbivore() * 2);
+        int countHerbivores = map.getCountHerbivore() * 2;
+        for(int i = 0; i <= countHerbivores - map.getCountHerbivore(); i++) {
+            map.setEntity(map.getRandomEmptyCoordinates(), new Herbivore(10, 1));
+        }
+        map.setCountHerbivore(countHerbivores);
     }
 
     public boolean isGrassEnough() {
-        return map.getCountGrass() >= 7;
+        return map.getCountGrass() >= Map.getColumnBorder() * Map.getRowBorder() / 25;
     }
 
     public boolean isHerbivoreEnough() {
-        return map.getCountHerbivore() >= 5;
+        return map.getCountHerbivore() >= Map.getColumnBorder() * Map.getRowBorder() / 45;
     }
 }

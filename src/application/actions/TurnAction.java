@@ -2,50 +2,32 @@ package application.actions;
 
 import application.Coordinates;
 import application.Map;
-import application.MapRenderer;
-import application.creatures.Herbivore;
-import application.creatures.Predator;
-import application.entities.Entity;
+import application.entities.creatures.Creature;
+import application.gui.mapRenderer.ConsoleMapRenderer;
+import application.gui.mapRenderer.MapRenderer;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
+
 
 public class TurnAction extends Action {
+    private final MapRenderer renderer = new ConsoleMapRenderer();
 
-    private List<java.util.Map.Entry<Coordinates, Entity>> herbivores;
-    private List<java.util.Map.Entry<Coordinates, Entity>> predators;
-    MapRenderer renderer = new MapRenderer();
 
     public void creatureMoves(Map map) {
-        moveHerbivores(map);
-        movePredators(map);
-
+        for (Creature creature : map.getEntitiesOfType(Creature.class).values()) {
+            creature.makeMove(map);
+        }
+        renderMap(map);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void renderMap(Map map) {
-        renderer.render(map);
+        System.out.println();
+        renderer.renderMap(map);
     }
 
-
-    private void movePredators(Map map) {
-        predators = map.getEntities().entrySet().stream()
-              .filter(entity -> entity.getValue() instanceof Predator)
-              .collect(Collectors.toList());
-
-        for (java.util.Map.Entry<Coordinates, Entity> entry : predators) {
-            Predator predator = (Predator) entry.getValue();
-            predator.makeMove(map, entry.getKey());
-        }
-    }
-
-    private void moveHerbivores(Map map) {
-        herbivores = map.getEntities().entrySet().stream()
-              .filter(entity -> entity.getValue() instanceof Herbivore)
-              .collect(Collectors.toList());
-
-        for (java.util.Map.Entry<Coordinates, Entity> entry : herbivores) {
-            Herbivore herbivore = (Herbivore) entry.getValue();
-            herbivore.makeMove(map, entry.getKey());
-        }
-    }
 }
