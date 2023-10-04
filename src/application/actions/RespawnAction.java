@@ -7,7 +7,7 @@ import application.entities.Grass;
 
 public class RespawnAction extends Action {
 
-    private Map map;
+    private final Map map;
 
     public RespawnAction() {
         map = Simulation.getMap();

@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
 
 public class AStarPathFinder extends PathFinder {
 
-    public <T extends Entity> LinkedList<Coordinates> findPath(Coordinates source, Coordinates targetCoordinates, Class<? extends Entity> target) {
+    public LinkedList<Coordinates> findPath(Coordinates source, Coordinates targetCoordinates, Class<? extends Entity> target) {
         PriorityQueue<Node> openList = new PriorityQueue<>();
         PriorityQueue<Node> closedList = new PriorityQueue<>();
 

@@ -1,12 +1,9 @@
 package application.actions;
 
-import application.Coordinates;
 import application.Map;
 import application.entities.creatures.Creature;
 import application.gui.mapRenderer.ConsoleMapRenderer;
 import application.gui.mapRenderer.MapRenderer;
-
-import java.util.*;
 
 
 public class TurnAction extends Action {

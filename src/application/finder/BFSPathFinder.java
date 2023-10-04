@@ -9,7 +9,7 @@ import java.util.*;
 public class BFSPathFinder extends PathFinder {
 
     @Override
-    public <T extends Entity> Deque<Coordinates> findPath(Coordinates source, Coordinates targetCoordinates, Class<? extends Entity> target) {
+    public Deque<Coordinates> findPath(Coordinates source, Coordinates targetCoordinates, Class<? extends Entity> target) {
         Deque<Coordinates> path = new ArrayDeque<>();
         Deque<Coordinates> queue = new ArrayDeque<>();
         queue.add(source);

@@ -1,14 +1,10 @@
 package application.gui;
 
-import application.Coordinates;
+
 import application.Map;
-import application.actions.InitAction;
-import application.actions.TurnAction;
-import application.entities.Entity;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
 public class MapPanel extends JPanel {
 

@@ -9,7 +9,7 @@ import java.util.*;
 
 public abstract class PathFinder {
 
-    public abstract <T extends Entity> Deque<Coordinates> findPath(Coordinates source, Coordinates targetCoordinates, Class<? extends Entity> target);
+    public abstract Deque<Coordinates> findPath(Coordinates source, Coordinates targetCoordinates, Class<? extends Entity> target);
 
     public <T> Coordinates getNearestTarget(Coordinates source, Class<T> target) {
         List<Coordinates> targets = Simulation.getMap().getEntitiesOfType(target).keySet().stream().toList();
