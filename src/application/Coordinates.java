@@ -19,9 +19,7 @@ public class Coordinates {
         int r = getRow() + shift.rowShift();
         int c = getColumn() + shift.columnShift();
         if ((r < 1) || (r > Map.getRowBorder())) return false;
-        if ((c < 1) || (c > Map.getColumnBorder())) return false;
-
-        return true;
+        return (c >= 1) && (c <= Map.getColumnBorder());
     }
 
     @Override

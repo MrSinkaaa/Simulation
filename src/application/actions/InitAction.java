@@ -19,6 +19,12 @@ public class InitAction extends Action {
 
     private final HashMap<String, Integer> mapPoolEntities = new HashMap<>();
 
+    private int countGrass = Map.getColumnBorder() * Map.getRowBorder() / 4;
+    private int countHerbivore = countGrass / 8;
+    private final int countPredator = countGrass / 12;
+    private final int countTree = countGrass / 3;
+    private final int countRock = countGrass / 4;
+
 
     public void initMap() {
         map = Simulation.getMap();
@@ -50,11 +56,11 @@ public class InitAction extends Action {
     }
 
     private void createMapPoolEntities() {
-        mapPoolEntities.put("Herbivore", map.getCountHerbivore());
-        mapPoolEntities.put("Predator", map.getCountPredator());
-        mapPoolEntities.put("Grass", map.getCountGrass());
-        mapPoolEntities.put("Tree", map.getCountTree());
-        mapPoolEntities.put("Rock", map.getCountRock());
+        mapPoolEntities.put("Herbivore", countHerbivore);
+        mapPoolEntities.put("Predator", countPredator);
+        mapPoolEntities.put("Grass", countGrass);
+        mapPoolEntities.put("Tree", countTree);
+        mapPoolEntities.put("Rock", countRock);
     }
 
 

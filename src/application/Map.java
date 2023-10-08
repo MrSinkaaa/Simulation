@@ -12,12 +12,6 @@ public class Map {
     private static final int columnBorder = 15;
     private static final int rowBorder = 15;
 
-    private int countGrass = Map.getColumnBorder() * Map.getRowBorder() / 4;
-    private int countHerbivore = countGrass / 8;
-    private final int countPredator = countGrass / 12;
-    private final int countTree = countGrass / 5;
-    private final int countRock = countGrass / 6;
-
     private final HashMap<Coordinates, Entity> entities = new HashMap<>();
 
 
@@ -28,33 +22,7 @@ public class Map {
     public static int getRowBorder() {
         return rowBorder;
     }
-    public int getCountGrass() {
-        return countGrass;
-    }
 
-    public void setCountGrass(int countGrass) {
-        this.countGrass = countGrass;
-    }
-
-    public int getCountHerbivore() {
-        return countHerbivore;
-    }
-
-    public void setCountHerbivore(int countHerbivore) {
-        this.countHerbivore = countHerbivore;
-    }
-
-    public int getCountPredator() {
-        return countPredator;
-    }
-
-    public int getCountTree() {
-        return countTree;
-    }
-
-    public int getCountRock() {
-        return countRock;
-    }
 
     public Entity getEntity(Coordinates coordinates) {
         return entities.get(coordinates);

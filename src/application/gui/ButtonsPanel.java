@@ -8,16 +8,16 @@ import java.awt.*;
 
 public class ButtonsPanel extends JPanel {
 
-    private final JButton startSimulationButton = new JButton("Start Simulation");
-    private final JButton pauseSimulationButton = new JButton("Pause Simulation");
-    private final JButton resetSimulationButton = new JButton("Reset Simulation");
-    private final JButton turnNextButton = new JButton("Turn Next");
+    private final JButton startButton = new JButton("start");
+    private final JButton pauseButton = new JButton("pause");
+    private final JButton resetSimulationButton = new JButton("reset");
+    private final JButton turnNextButton = new JButton("turn next");
 
     private final Map map;
 
     public ButtonsPanel() {
-        this.add(startSimulationButton);
-        this.add(pauseSimulationButton);
+        this.add(startButton);
+        this.add(pauseButton);
         this.add(resetSimulationButton);
         this.add(turnNextButton);
 
@@ -40,21 +40,17 @@ public class ButtonsPanel extends JPanel {
     }
 
     public void startSimulationButtonClicked() {
-        startSimulationButton.addActionListener(e -> {
+        startButton.addActionListener(e -> {
 
 //            Thread thread = new Thread(() -> {
-                try {
-                    Simulation.getGame().startGame(map);
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
-//            });
+            Simulation.getGame().startGame(map);
+            //            });
 
         });
     }
 
     public void pauseSimulationButtonClicked() {
-        pauseSimulationButton.addActionListener(e -> {
+        pauseButton.addActionListener(e -> {
             Simulation.getGame().stopGame();
         });
     }

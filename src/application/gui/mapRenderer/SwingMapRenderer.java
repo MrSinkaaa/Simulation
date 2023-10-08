@@ -2,7 +2,6 @@ package application.gui.mapRenderer;
 
 import application.Coordinates;
 import application.Map;
-import application.Simulation;
 import application.entities.Entity;
 import application.gui.ButtonsPanel;
 import application.gui.EntityContainer;
@@ -10,11 +9,11 @@ import application.gui.MapPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class SwingMapRenderer extends MapRenderer {
 
     private final MapPanel simulationPanel = new MapPanel();
-    private final Map map = Simulation.getMap();
     private final String URL = "resource/images/";
 
     public SwingMapRenderer() {
@@ -45,9 +44,9 @@ public class SwingMapRenderer extends MapRenderer {
     public void renderMap(Map map) {
         simulationPanel.removeAll();
 
-        for(int row = 0; row < Map.getRowBorder(); row++) {
-            for(int col = 0; col < Map.getColumnBorder(); col++) {
-                Coordinates coordinates = new Coordinates(row + 1, col + 1);
+        for(int row = 1; row <= Map.getRowBorder(); row++) {
+            for(int col = 1; col <= Map.getColumnBorder(); col++) {
+                Coordinates coordinates = new Coordinates(row, col);
                 Entity entity = map.getEntity(coordinates);
                 simulationPanel.add(new EntityContainer(entity, getIcon(entity)));
             }
@@ -57,15 +56,15 @@ public class SwingMapRenderer extends MapRenderer {
     }
 
     private ImageIcon getIcon(Entity entity) {
-        if(entity == null) return new ImageIcon(getClass().getClassLoader().getResource(URL + "void.png"));
+        if(entity == null) return new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "void.png")));
 
         return switch(entity.getClass().getSimpleName()) {
-            case "Grass" -> new ImageIcon(getClass().getClassLoader().getResource(URL + "grass.png"));
-            case "Herbivore" -> new ImageIcon(getClass().getClassLoader().getResource(URL + "herbivore.png"));
-            case "Predator" -> new ImageIcon(getClass().getClassLoader().getResource(URL + "predator.png"));
-            case "Tree" -> new ImageIcon(getClass().getClassLoader().getResource(URL + "tree.png"));
-            case "Rock" -> new ImageIcon(getClass().getClassLoader().getResource(URL + "rock.png"));
-            default -> new ImageIcon(getClass().getClassLoader().getResource(URL + "void.png"));
+            case "Grass" -> new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "grass.png")));
+            case "Herbivore" -> new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "herbivore.png")));
+            case "Predator" -> new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "predator.png")));
+            case "Tree" -> new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "tree.png")));
+            case "Rock" -> new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "rock.png")));
+            default -> new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(URL + "void.png")));
         };
     }
 }

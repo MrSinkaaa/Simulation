@@ -2,12 +2,12 @@ package application.actions;
 
 import application.Map;
 import application.entities.creatures.Creature;
-import application.gui.mapRenderer.ConsoleMapRenderer;
 import application.gui.mapRenderer.MapRenderer;
+import application.gui.mapRenderer.SwingMapRenderer;
 
 
 public class TurnAction extends Action {
-    private final MapRenderer renderer = new ConsoleMapRenderer();
+    private final MapRenderer renderer = new SwingMapRenderer();
 
 
     public void creatureMoves(Map map) {

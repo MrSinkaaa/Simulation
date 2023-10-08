@@ -14,20 +14,20 @@ public class Game {
     private boolean isGameStopped = false;
 
     public void nextTurn(Map map) {
+        turnAction.creatureMoves(map);
+
+
         if(!respawnAction.isGrassEnough()) {
             respawnAction.respawnGrass();
-        } else if(!respawnAction.isHerbivoreEnough()) {
+        }
+        if(!respawnAction.isHerbivoreEnough()) {
             respawnAction.respawnHerbivore();
         }
 
-        turnAction.creatureMoves(map);
         System.out.println("Moves: " + movesCounter);
-        System.out.println("Grasses " + map.getCountGrass());
-        System.out.println("Herbivores " + map.getCountHerbivore());
-
     }
 
-    public void startGame(Map map) throws InterruptedException {
+    public void startGame(Map map) {
         initAction.initMap();
         turnAction.renderMap(map);
 
