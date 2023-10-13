@@ -13,7 +13,7 @@ objects with which you can't interact - they just fill the space.
    - 'Herbivores' can either go towards the 'Grass' or eat it;
    - 'Predators' can either go towards the 'Herbivores' or eat them.
 - Implemented pathfinding algorithms:
-  - 'Breadth-firest search' and 'A* algorithm';
+  - 'Breadth-first search' and 'A* algorithm';
   - Algorithms of the path bypasses all obstacles.
 - Render map: 
   - The console renderer displays the current state of the map(entities named by the first letter of the class);
