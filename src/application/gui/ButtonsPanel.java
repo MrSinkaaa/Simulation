@@ -1,6 +1,5 @@
 package application.gui;
 
-import application.Map;
 import application.Simulation;
 
 import javax.swing.*;
@@ -29,9 +28,7 @@ public class ButtonsPanel extends JPanel {
     }
 
     public void turnNextButtonClicked() {
-        turnNextButton.addActionListener(e -> {
-            Simulation.getGame().nextTurn();
-        });
+        turnNextButton.addActionListener(e -> Simulation.getGame().nextTurn());
     }
 
     public void startSimulationButtonClicked() {
@@ -42,11 +39,8 @@ public class ButtonsPanel extends JPanel {
     }
 
     public void pauseSimulationButtonClicked() {
-        SwingUtilities.invokeLater(() -> {
-            pauseButton.addActionListener(e -> {
-                Simulation.getGame().stopGame();
-            });
-        });
+        pauseButton.addActionListener(e -> Simulation.getGame().stopGame());
+
     }
 
     private class StartButtonWorker extends SwingWorker<Void, Void> {
