@@ -22,8 +22,8 @@ public class InitAction extends Action {
     private int countGrass = Map.getColumnBorder() * Map.getRowBorder() / 4;
     private int countHerbivore = countGrass / 8;
     private final int countPredator = countGrass / 12;
-    private final int countTree = countGrass / 3;
-    private final int countRock = countGrass / 4;
+    private final int countTree = countGrass / 2;
+    private final int countRock = countGrass / 2;
 
 
     public void initMap() {
