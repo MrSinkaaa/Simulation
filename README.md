@@ -18,4 +18,7 @@ objects with which you can't interact - they just fill the space.
 - Render map: 
   - The console renderer displays the current state of the map(entities named by the first letter of the class);
   - The swing renderer displays a beautiful simulation image with control buttons.
+ 
+## Requirement:
+- Java 16+
 
