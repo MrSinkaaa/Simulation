@@ -13,9 +13,16 @@ public class Game {
     private int movesCounter = 0;
     private boolean isGameStopped = false;
 
-    public void nextTurn(Map map) {
-        turnAction.creatureMoves(map);
+    private final Map map;
 
+    public Game() {
+        map = Simulation.getMap();
+        initAction.initMap();
+        turnAction.renderMap(map);
+    }
+
+    public void nextTurn() {
+        turnAction.creatureMoves(map);
 
         if(!respawnAction.isGrassEnough()) {
             respawnAction.respawnGrass();
@@ -23,18 +30,16 @@ public class Game {
         if(!respawnAction.isHerbivoreEnough()) {
             respawnAction.respawnHerbivore();
         }
-
+        movesCounter++;
         System.out.println("Moves: " + movesCounter);
     }
 
-    public void startGame(Map map) {
-        initAction.initMap();
+    public void startGame() {
+        isGameStopped = false;
         turnAction.renderMap(map);
 
         while(!isGameStopped) {
-            movesCounter++;
-            nextTurn(map);
-
+            nextTurn();
         }
     }
 

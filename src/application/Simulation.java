@@ -6,9 +6,9 @@ public class Simulation {
     private static Game game;
 
 
-    public static void main(String[] args) throws InterruptedException {
-        game = new Game();
-        game.startGame(map);
+    public static void main(String[] args) {
+        game = createNewGame();
+ //       game.startGame(map);
     }
 
     public static Map getMap() {
@@ -17,5 +17,9 @@ public class Simulation {
 
     public static Game getGame() {
         return game;
+    }
+
+    public static Game createNewGame() {
+        return new Game();
     }
 }
